@@ -2,12 +2,16 @@ const path = require('path'); // Built into Node
 const express = require('express');
 const logger = require('morgan');
 const app = express();
+const profileRoutes = require('./routes/profile');
 
 // Process the secrets/config vars in .env
 require('dotenv').config();
 
 // Connect to the database
 require('./db');
+
+// Connect to profile
+app.use('/api/profile', profileRoutes);
 
 app.use(logger('dev'));
 // Serve static assets from the frontend's built code folder (dist)
