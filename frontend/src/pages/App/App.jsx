@@ -9,6 +9,7 @@ import LogInPage from '../LogInPage/LogInPage';
 import NavBar from '../../components/NavBar/NavBar';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import PatronListPage from '../PatronListPage/PatronListPage';
+import AddPatronPage from '../AddPatronPage/AddPatronPage';
 import './App.css';
 import EditPatronPage from '../EditPatronPage/EditPatronPage';
 
@@ -23,7 +24,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path='/patrons' element={<PatronListPage />} />
+            <Route path="/patrons" element={<PatronListPage />} />
+            <Route path="patrons/new" element={<AddPatronPage />} />
             <Route path="/patrons/:id/edit" element={<EditPatronPage />} />
             <Route path="/posts" element={<PostListPage />} />
             <Route path="/posts/new" element={<NewPostPage />} />

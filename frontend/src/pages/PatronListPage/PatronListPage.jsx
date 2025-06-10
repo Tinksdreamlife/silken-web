@@ -24,6 +24,7 @@ export default function PatronListPage() {
     return (
         <section>
             <h1>Patrons</h1>
+            <Link to="/patrons/new">Add Patron</Link>
             <ul>
                 {patrons.map(patron => (
                     <li key={patron._id}>
