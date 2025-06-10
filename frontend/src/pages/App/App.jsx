@@ -8,7 +8,9 @@ import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
 import NavBar from '../../components/NavBar/NavBar';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import PatronListPage from '../PatronListPage/PatronListPage';
 import './App.css';
+import EditPatronPage from '../EditPatronPage/EditPatronPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -21,6 +23,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path='/patrons' element={<PatronListPage />} />
+            <Route path="/patrons/:id/edit" element={<EditPatronPage />} />
             <Route path="/posts" element={<PostListPage />} />
             <Route path="/posts/new" element={<NewPostPage />} />
             <Route path="*" element={null} />
