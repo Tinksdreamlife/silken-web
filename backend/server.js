@@ -3,6 +3,7 @@ const express = require('express');
 const logger = require('morgan');
 const app = express();
 const profileRoutes = require('./routes/profile');
+const patronRoutes = require('./routes/patronRoute');
 
 // Process the secrets/config vars in .env
 require('dotenv').config();
@@ -12,6 +13,9 @@ require('./db');
 
 // Connect to profile
 app.use('/api/profile', profileRoutes);
+
+// Connect to patrons
+app.use('/api/patrons', patronRoutes);
 
 app.use(logger('dev'));
 // Serve static assets from the frontend's built code folder (dist)
