@@ -24,14 +24,16 @@ async function create(req, res) {
 }
 
 async function update(req, res) {
-    const patron = await Patron.findByIdAndUpdate(
+    const updatedPatron = await Patron.findByIdAndUpdate(
         req.params.id,
         req.body,
     );
     res.json(updatedPatron);
+    }
 
     async function deleteOne(req, res) {
         await Patron.findByIdAndDelete(req.params.id);
         res.json({ message: 'Patron Deleted'});
     }
-}
+
+

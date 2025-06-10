@@ -1,4 +1,3 @@
-const { create } = require('domain');
 const Profile = require('../models/profileModel');
 const User = require('../models/user');
 
@@ -40,6 +39,18 @@ async function update(req, res) {
         await profile.save();
         res.json(profile);
 
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+}
+
+// GET /api/profile/me
+
+async function show(req, res) {
+    try {
+        const profile = await Profile.findOne({ user: req.user._id });
+        if (!profile) return res.status(404).json({ error: 'Profile not found' });
+        res.json(profile);
     } catch (err) {
         res.status(400).json({ error: err.message });
     }

@@ -2,7 +2,7 @@ const path = require('path'); // Built into Node
 const express = require('express');
 const logger = require('morgan');
 const app = express();
-const profileRoutes = require('./routes/profile');
+const profileRoutes = require('./routes/profileRoute');
 const patronRoutes = require('./routes/patronRoute');
 
 // Process the secrets/config vars in .env
