@@ -29,8 +29,6 @@ export default function App() {
             <Route path="patrons/new" element={<AddPatronPage />} />
             <Route path="/patrons/:id/edit" element={<EditPatronPage />} />
             <Route path="/patrons/:id/strands/new" element={<AddStrandPage />} />
-            <Route path="/posts" element={<PostListPage />} />
-            <Route path="/posts/new" element={<NewPostPage />} />
             <Route path="*" element={null} />
           </Routes>
         ) : (
