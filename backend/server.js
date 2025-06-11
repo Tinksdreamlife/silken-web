@@ -4,6 +4,7 @@ const logger = require('morgan');
 const app = express();
 const profileRoutes = require('./routes/profileRoute');
 const patronRoutes = require('./routes/patronRoute');
+const strandRoutes = require('./routes/strandRoute');
 
 // Process the secrets/config vars in .env
 require('dotenv').config();
@@ -32,6 +33,7 @@ app.use(require('./middleware/checkToken'));
 // API Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/posts', require('./routes/posts'));
+app.use('/api/patrons/:id/strands', strandRoutes);
 
 
 // Use a "catch-all" route to deliver the frontend's production index.html
