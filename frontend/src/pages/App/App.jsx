@@ -12,6 +12,7 @@ import PatronListPage from '../PatronListPage/PatronListPage';
 import AddPatronPage from '../AddPatronPage/AddPatronPage';
 import './App.css';
 import EditPatronPage from '../EditPatronPage/EditPatronPage';
+import AddStrandPage from '../AddStrandPage/AddStrandPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="/patrons" element={<PatronListPage />} />
             <Route path="patrons/new" element={<AddPatronPage />} />
             <Route path="/patrons/:id/edit" element={<EditPatronPage />} />
+            <ROute path="/patrons/:id/strands/new" element={<AddStrandPage />} />
             <Route path="/posts" element={<PostListPage />} />
             <Route path="/posts/new" element={<NewPostPage />} />
             <Route path="*" element={null} />

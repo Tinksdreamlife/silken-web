@@ -31,6 +31,7 @@ export default function PatronListPage() {
                         {patron.patronName}
                         <Link to={`/patrons/${patron._id}/edit`}>Edit</Link>
                         <button onClick={() => handleDelete(patron._id)}>Delete</button>
+                        <Link to={`/patrons/${patron._id}/strands/new`}>➕ Add Strand</Link>
                     </li>
                 ))}
             </ul>

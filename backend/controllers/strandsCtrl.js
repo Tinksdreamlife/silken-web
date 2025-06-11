@@ -3,7 +3,7 @@ const Patron = require('../models/patronModel');
 
 module.exports = {
     create,
-    delete: deleteStrand
+    deleteStrand
 };
 
 // POST aka Add a new Strand to a Patron

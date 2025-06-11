@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import {useParams, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 
 export default function EditPatronPage() {
     const {id} =useParams();
@@ -28,6 +29,7 @@ export default function EditPatronPage() {
 return (
     <div>
         <h2>Edit Patron</h2>
+        <Link to={`/patrons/${patron._id}/strands/new`}>➕ Add Strand</Link>
         <form onSubmit={handleSubmit}>
             <label>Patron Name:</label>
             <input 
