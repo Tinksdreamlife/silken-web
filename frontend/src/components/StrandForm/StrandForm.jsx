@@ -14,7 +14,7 @@ export default function AddStrandForm({ patronId, onStrandAdded }) {
     async function handleSubmit(event) {
         event.preventDefault();
         try {
-            const res = await fetch('/api/patrons/${patronId}/strands', {
+            const res = await fetch(`/api/patrons/${patronId}/strands`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),

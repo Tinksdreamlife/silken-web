@@ -1,5 +1,5 @@
 import {useParams, useNavigate} from "react-router";
-import StrandForm from "../../components/StrandForm";
+import StrandForm from "../../components/StrandForm/StrandForm";
 
 export default function AddStrandPage() {
     const { id } = useParams(); //Patron ID from the URL

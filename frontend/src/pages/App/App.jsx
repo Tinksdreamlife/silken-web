@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Routes, Route } from 'react-router';
+import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../services/authService';
 import HomePage from '../HomePage/HomePage';
 import PostListPage from '../PostListPage/PostListPage';
@@ -28,7 +28,7 @@ export default function App() {
             <Route path="/patrons" element={<PatronListPage />} />
             <Route path="patrons/new" element={<AddPatronPage />} />
             <Route path="/patrons/:id/edit" element={<EditPatronPage />} />
-            <ROute path="/patrons/:id/strands/new" element={<AddStrandPage />} />
+            <Route path="/patrons/:id/strands/new" element={<AddStrandPage />} />
             <Route path="/posts" element={<PostListPage />} />
             <Route path="/posts/new" element={<NewPostPage />} />
             <Route path="*" element={null} />

@@ -1,4 +1,4 @@
-import { NavLink, Link, useNavigate } from 'react-router';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { logOut } from '../../services/authService';
 import './NavBar.css';
 
@@ -8,6 +8,7 @@ export default function NavBar({ user, setUser }) {
   function handleLogOut() {
     logOut();
     setUser(null);
+    navigate(' / ');
     // The <Link> that was clicked will navigate to "/"
   }
 
@@ -17,13 +18,14 @@ export default function NavBar({ user, setUser }) {
       &nbsp; | &nbsp;
       {user ? (
         <>
-          <NavLink to="/posts" end>
-            Post List
-          </NavLink>
+          <NavLink to="/patrons">My Patrons</NavLink>
           &nbsp; | &nbsp;
-          <NavLink to="/posts/new">New Post</NavLink>
+          <NavLink to="/patrons/new">Add Patron</NavLink>
+          &nbsp; | &nbsp;
+          <NavLink to="/profile">Profile</NavLink>
           &nbsp; | &nbsp;
           <Link to="/" onClick={handleLogOut}>Log Out</Link>
+           &nbsp; | &nbsp;
           <span>Welcome, {user.name}</span>
         </>
       ) : (
