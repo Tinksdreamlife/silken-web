@@ -13,7 +13,7 @@ async function create(req, res) {
         if (!patron) return res.status(404).json({ error: 'Patron not found' });
 
         const strand = await Strand.create({
-            patron: patronName,
+            patron: patron.patronName,
             site: req.body.site,
             link: req.body.link,
             notes: req.body.notes,
@@ -33,7 +33,7 @@ async function create(req, res) {
 // DELETE - remove a strand from a Patron and delete the strand document
 async function deleteStrand(req, res) {
     try {
-        const Patron = await Patron.findById(req.params.id);
+        const patron = await Patron.findById(req.params.id);
         if (!patron) return res.status(404).json({ error: 'Patron not found' });
 
         // Remove the strand ObjectId reference from the patron.strands array
