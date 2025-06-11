@@ -1,3 +1,4 @@
+const Strand = require('../models/strandModel');
 const Patron = require('../models/patronModel');
 
 module.exports = {
@@ -5,24 +6,46 @@ module.exports = {
     delete: deleteStrand
 };
 
+// POST aka Add a new Strand to a Patron
 async function create(req, res) {
     try {
         const patron = await Patron.findById(req.params.id);
-        patron.strands.push(req.body);
+        if (!patron) return res.status(404).json({ error: 'Patron not found' });
+
+        const strand = await Strand.create({
+            patron: patronName,
+            site: req.body.site,
+            link: req.body.link,
+            notes: req.body.notes,
+            revenue: req.body.revenue
+        });
+
+        patron.strands.push(strand._id);
         await patron.save();
-        res.status(201).json(patron);
+
+        const populatedPatron = await Patron.findById(patron._id).populate('strands');
+        res.status(201).json(populatedPatron);
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
 }
 
+// DELETE - remove a strand from a Patron and delete the strand document
 async function deleteStrand(req, res) {
     try {
-        const Patron = await Patron.findById(req.params.id );
-        patron.strands.id(req.params.strandId).remove();
+        const Patron = await Patron.findById(req.params.id);
+        if (!patron) return res.status(404).json({ error: 'Patron not found' });
+
+        // Remove the strand ObjectId reference from the patron.strands array
+        patron.strands.pull(req.params.strandId);
         await patron.save();
-        res.json(patron);
+
+        // Remove the Strand document
+        await Strand.findByIdAndDelete(req.params.strandId);
+
+        const populatedPatron = await Patron.findById(patron._id).populate('strands');
+        res.json(populatedPatron);
     } catch (err) {
-        res.status(400).json({ error: err.message});
+        res.status(400).json({ error: err.message });
     }
 }
