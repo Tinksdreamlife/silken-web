@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../services/authService';
 import HomePage from '../HomePage/HomePage';
-import PostListPage from '../PostListPage/PostListPage';
-import NewPostPage from '../NewPostPage/NewPostPage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
 import NavBar from '../../components/NavBar/NavBar';
