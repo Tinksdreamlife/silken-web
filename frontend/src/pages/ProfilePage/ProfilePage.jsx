@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { getProfile, updateProfile } from "../../services/profileService";
 
 export default function ProfilePage() {
     const [profile, setProfile] = useState(null);
@@ -9,11 +10,15 @@ export default function ProfilePage() {
 
     useEffect(() => {
         async function fetchProfile() {
-            const res = await fetch('/api/profile/me');
-            if (res.ok) {
-                const data = await res.json();
+            try {
+                const data = await getProfile(); // now using service function
                 setProfile(data);
-                setFormData({ stageName: data.stageName || '', sites: data.sites?.join(',') || '' });
+                setFormData({
+                    stageName: data.stageName || '',
+                    sites: data.sites?.join(',') || '',
+                });
+            } catch (err) {
+                console.error('Error fetching profile:', err);
             }
         }
         fetchProfile();
@@ -21,18 +26,16 @@ export default function ProfilePage() {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const res = await fetch('/api/profile', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
+        try {
+            const updated = await updateProfile({
                 stageName: formData.stageName,
-                sites: formData.sites.split(',').map(site)
-            }),
-        });
-        if (res.ok) {
-            const data = await res.json();
-            setProfile(data);
+                sites: formData.sites.split(',').map(site => site.trim()), // fixing the .mapsite error
+            });
+            setProfile(updated);
             alert('Profile saved!');
+        } catch (err) {
+            console.error('Error saving profile:', err);
+            alert('Error saving profile');
         }
     }
 
