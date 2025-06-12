@@ -11,6 +11,7 @@ import AddPatronPage from '../AddPatronPage/AddPatronPage';
 import './App.css';
 import EditPatronPage from '../EditPatronPage/EditPatronPage';
 import AddStrandPage from '../AddStrandPage/AddStrandPage';
+import EditProfilePage from '../EditProfilePage/EditProfilePage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -23,6 +24,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/profile/edit" element={<EditProfilePage />} />
             <Route path="/patrons" element={<PatronListPage />} />
             <Route path="patrons/new" element={<AddPatronPage />} />
             <Route path="/patrons/:id/edit" element={<EditPatronPage />} />
