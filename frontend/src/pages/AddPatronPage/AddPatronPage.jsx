@@ -35,7 +35,7 @@ export default function AddPatronPage() {
                     onChange={(event) => setFormData({ ...formData, generalNotes: event.target.value})}
                     />
 
-                    <buttton type="submit">Add Patron</buttton>
+                    <button type="submit">Add Patron</button>
                 </form>
             </div>
         )

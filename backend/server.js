@@ -2,9 +2,6 @@ const path = require('path'); // Built into Node
 const express = require('express');
 const logger = require('morgan');
 const app = express();
-const profileRoutes = require('./routes/profileRoute');
-const patronRoutes = require('./routes/patronRoute');
-const strandRoutes = require('./routes/strandRoute');
 
 // Process the secrets/config vars in .env
 require('dotenv').config();
@@ -12,35 +9,34 @@ require('dotenv').config();
 // Connect to the database
 require('./db');
 
-// Connect to profile
-app.use('/api/profile', profileRoutes);
-
-// Connect to patrons
-app.use('/api/patrons', patronRoutes);
-
+// MIDDLEWARE
 app.use(logger('dev'));
-// Serve static assets from the frontend's built code folder (dist)
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
-// Note that express.urlencoded middleware is not needed
-// because forms are not submitted!
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-// Middleware to check the request's headers for a JWT and
-// verify that it's a valid.  If so, it will assign the
-// user object in the JWT's payload to req.user
+// JWT Authentication Middleware BEFORE protected routes
 app.use(require('./middleware/checkToken'));
 
-// API Routes
+// PUBLIC ROUTES (No Auth Required)
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/patrons/:id/strands', strandRoutes);
 
+// PROTECTED ROUTES (Require token - checkToken adds req.user)
+app.use('/api/profile', require('./routes/profileRoute'));
+app.use('/api/patrons', require('./routes/patronRoute'));
+app.use('/api/patrons/:id/strands', require('./routes/strandRoute'));
 
-// Use a "catch-all" route to deliver the frontend's production index.html
+// CATCH-ALL for SPA Routing (React)
 app.get('/*splat', function (req, res) {
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
+// START SERVER
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`The express app is listening on ${port}`);
 });
+
+
+
+
+

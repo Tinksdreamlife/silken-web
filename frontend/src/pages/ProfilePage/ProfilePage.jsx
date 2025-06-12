@@ -30,7 +30,7 @@ export default function ProfilePage() {
             stageNames: formData.stageName.split(',').map(name => name.trim()),
             sites: formData.sites.split(',').map(site => site.trim())
         };
-        try{
+        try {
             let data;
             if (profile) {
                 data = await updateProfile(profileData);
