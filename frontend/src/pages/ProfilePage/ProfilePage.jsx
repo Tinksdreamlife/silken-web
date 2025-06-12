@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getProfile, updateProfile } from "../../services/profileService";
+import { createProfile, getProfile, updateProfile } from "../../services/profileService";
 
 export default function ProfilePage() {
     const [profile, setProfile] = useState(null);
@@ -26,16 +26,22 @@ export default function ProfilePage() {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        try {
-            const updated = await updateProfile({
-                stageName: formData.stageName,
-                sites: formData.sites.split(',').map(site => site.trim()), // fixing the .mapsite error
-            });
-            setProfile(updated);
+        const profileData = {
+            stageNames: formData.stageName.split(',').map(name => name.trim()),
+            sites: formData.sites.split(',').map(site => site.trim())
+        };
+        try{
+            let data;
+            if (profile) {
+                data = await updateProfile(profileData);
+            } else {
+                data = await createProfile(profileData);
+            }
+            setProfile(data);
             alert('Profile saved!');
         } catch (err) {
-            console.error('Error saving profile:', err);
-            alert('Error saving profile');
+            console.error('Error saving profile', err);
+            alert('Error saving profile.');
         }
     }
 

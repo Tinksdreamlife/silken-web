@@ -10,7 +10,7 @@ module.exports = {
 // POST /api/profile
 async function create(req, res) {
     try {
-        const user = await User.findbyId(req.user._id);
+        const user = await User.findById(req.user._id);
 
         const profile = await Profile.create({
             user: user._id,
