@@ -23,7 +23,7 @@ app.use('/api/auth', require('./routes/auth'));
 // PROTECTED ROUTES (Require token - checkToken adds req.user)
 app.use('/api/profile', require('./routes/profileRoute'));
 app.use('/api/patrons', require('./routes/patronRoute'));
-app.use('/api/patrons/:id/strands', require('./routes/strandRoute'));
+app.use('/api/strands', require('./routes/strandRoute'));
 
 // CATCH-ALL for SPA Routing (React)
 app.get('/*splat', function (req, res) {
