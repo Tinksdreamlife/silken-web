@@ -23,7 +23,7 @@ export default function App() {
         {user ? (
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/profile" element={<ProfilePage key={Date.now()}/>} />
             <Route path="/profile/edit" element={<EditProfilePage />} />
             <Route path="/patrons" element={<PatronListPage />} />
             <Route path="patrons/new" element={<AddPatronPage />} />

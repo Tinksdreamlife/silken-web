@@ -25,7 +25,8 @@ export default function EditProfilePage() {
         event.preventDefault();
         try {
             await updateProfile({
-                stageNames: formData.stageNames.split(',').map(s => s.trim())
+                stageNames: formData.stageNames.split(',').map(s => s.trim()),
+                sites: formData.sites.split(',').map(s => s.trim())
             });
             navigate('/profile');
         } catch (err) {

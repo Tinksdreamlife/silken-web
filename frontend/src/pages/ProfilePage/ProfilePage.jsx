@@ -1,90 +1,44 @@
 import { useState, useEffect } from "react";
-import { createProfile, getProfile, updateProfile } from "../../services/profileService";
+import { getProfile } from "../../services/profileService";
+import { Link } from 'react-router-dom';
 
 export default function ProfilePage() {
     const [profile, setProfile] = useState(null);
-    const [formData, setFormData] = useState({
-        stageName: '',
-        sites: '',
-    });
+    const [notFound, setNotFound] = useState(false);
 
     useEffect(() => {
         async function fetchProfile() {
             try {
                 const data = await getProfile(); // now using service function
                 setProfile(data);
-                setFormData({
-                    stageName: data.stageName || '',
-                    sites: data.sites?.join(',') || '',
-                });
             } catch (err) {
-                console.error('Error fetching profile:', err);
+                if (err.message === "Profile not found") {
+                    setNotFound(true);
+                } else {
+                    console.error('Error fetching profile:', err);
+                }
             }
         }
         fetchProfile();
     }, []);
 
-    async function handleSubmit(event) {
-        event.preventDefault();
-        const profileData = {
-            stageNames: formData.stageName.split(',').map(name => name.trim()),
-            sites: formData.sites.split(',').map(site => site.trim())
-        };
-        try {
-            let data;
-            if (profile) {
-                data = await updateProfile(profileData);
-            } else {
-                data = await createProfile(profileData);
-            }
-            setProfile(data);
-            alert('Profile saved!');
-        } catch (err) {
-            console.error('Error saving profile', err);
-            alert('Error saving profile.');
-        }
+    if (notFound) {
+        return (
+            <div>
+                <h1> No porfile found</h1>
+                <Link to="/profile/edit">Create Your Profile</Link>
+            </div>
+        );
     }
 
-    function handleChange(event) {
-        setFormData({ ...formData, [event.target.name]: event.target.value });
-    }
+    if (!profile) return <p>Loading profile...</p>;
 
     return (
         <div>
             <h1>My Profile</h1>
-
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Stage Name:
-                    <input
-                        type="text"
-                        name="stageName"
-                        value={formData.stageName}
-                        onChange={handleChange}
-                    />
-                </label>
-                <br />
-                <label>
-                    Sites (comma separated):
-                    <input
-                        type="text"
-                        name="sites"
-                        value={formData.sites}
-                        onChange={handleChange}
-                    />
-                </label>
-                <br />
-                <button type="submit">Save Profile</button>
-            </form>
-
-            {profile && (
-                <div>
-                    <h2>Current Profile</h2>
-                    <p>Stage Name: {profile.stageName}</p>
-                    <p>Sites: {profile.sites?.join(',')}</p>
-                </div>
-            )}
-
+            <p><strong>Stage Names:</strong> {profile?.stageNames || 'N/A'}</p>
+            <p><strong>Sites:</strong> {profile?.sites?.length ? profile.sites.join(' , ') : 'None listed'}</p>
+            <Link to="/profile/edit">Update Profile</Link>
         </div>
     );
 }

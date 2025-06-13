@@ -28,6 +28,12 @@ const profileSchema = new Schema(
         required: true, // required at least one site
       },
     ],
+    sites: [
+      {
+        type: String,
+        required: true,
+      }
+    ]
   },
   { timestamps: true, }
 );
