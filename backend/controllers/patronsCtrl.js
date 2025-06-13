@@ -10,9 +10,11 @@ module.exports = {
 
 async function index(req, res) {
     try{
-    const patrons = await Patron.find({}).populate('strands');
+    const patrons = await Patron.find({ user: req.user._id}).populate('strands');
+    console.log("Fetched patrons for user:", req.user._id, patrons); //To Debug only
     res.json(patrons);
 } catch (err) {
+    console.error("Error fetching patrons:", err); //Error log
     res.status(500).json({ error: err.message});
 }
 }
@@ -27,8 +29,17 @@ async function show(req, res) {
 }
 
 async function create(req, res) {
-    const patron = await Patron.create(req.body);
+    try{
+    const patron = await Patron.create({
+        ...req.body,
+        user: req.user._id //connects the patron to the logged in user
+    });
+   
     res.status(201).json(patron);
+    } catch (err) {
+        console.error("Error creating patron:", err);
+        res.status(400).json({ error: err.message});
+    }
 }
 
 async function update(req, res) {
