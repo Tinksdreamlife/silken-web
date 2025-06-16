@@ -2,6 +2,7 @@ const path = require('path'); // Built into Node
 const express = require('express');
 const logger = require('morgan');
 const app = express();
+const ensureLoggedIn = require('../middleware/ensureLoggedIn');
 
 // Process the secrets/config vars in .env
 require('dotenv').config();
@@ -21,9 +22,9 @@ app.use(require('./middleware/checkToken'));
 app.use('/api/auth', require('./routes/auth'));
 
 // PROTECTED ROUTES (Require token - checkToken adds req.user)
-app.use('/api/profile', require('./routes/profileRoute'));
-app.use('/api/patrons', require('./routes/patronRoute'));
-app.use('/api/strands', require('./routes/strandRoute'));
+app.use('/api/profile', ensureLoggedIn, require('./routes/profileRoute'));
+app.use('/api/patrons', ensureLoggedIn, require('./routes/patronRoute'));
+app.use('/api/strands', ensureLoggedIn, require('./routes/strandRoute'));
 
 // CATCH-ALL for SPA Routing (React)
 app.get('/*splat', function (req, res) {
