@@ -3,7 +3,9 @@ const Patron = require('../models/patronModel');
 
 module.exports = {
     create,
-    deleteStrand
+    deleteStrand,
+    show,
+    update
 };
 
 // POST aka Add a new Strand to a Patron
@@ -47,5 +49,31 @@ async function deleteStrand(req, res) {
         res.json(populatedPatron);
     } catch (err) {
         res.status(400).json({ error: err.message });
+    }
+}
+
+// GET single strand
+async function show(req, res) {
+    try {
+        const strand = await Strand.findById(req.params.strandId);
+if (!strand) return res. status(404).json({ error: 'Strand not found'});
+res.json(strand);
+    } catch (err) {
+        res.status(400).json({ error: err.message});
+    }
+}
+
+// PUT update
+async function update(req, res) {
+    try {
+        const strand = await Strand.findByIdAndUpdate(
+            req.params.strandId,
+            req.body,
+            {new: true}
+        );
+        if (!strand) return res.status(404).json({ error: "Strand not found"});
+        res.json(strand);
+    } catch (err) {
+        res.status(400).json({ error: err.message});
     }
 }

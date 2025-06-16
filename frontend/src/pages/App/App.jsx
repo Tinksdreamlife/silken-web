@@ -13,6 +13,7 @@ import EditPatronPage from '../EditPatronPage/EditPatronPage';
 import AddStrandPage from '../AddStrandPage/AddStrandPage';
 import EditProfilePage from '../EditProfilePage/EditProfilePage';
 import PatronDetailPage from '../PatronDetailPage/PatronDetailPage';
+import EditStrandPage from '../EditStrandPage/EditStrandPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -31,6 +32,7 @@ export default function App() {
             <Route path="/patrons/:id/edit" element={<EditPatronPage />} />
             <Route path="/patrons/:id" element={<PatronDetailPage />} />
             <Route path="/patrons/:id/strands/new" element={<AddStrandPage />} />
+            <Route path="/strands/:strandId/edit" element={<EditStrandPage />} />
             <Route path="*" element={null} />
           </Routes>
         ) : (
