@@ -9,13 +9,13 @@ module.exports = {
 // POST aka Add a new Strand to a Patron
 async function create(req, res) {
     try {
-        const patron = await Patron.findById(req.params.id);
+        const patron = await Patron.findById(req.params.patronId);
         if (!patron) return res.status(404).json({ error: 'Patron not found' });
 
         const strand = await Strand.create({
-            patron: patron.patronName,
+            patronName: patron.patronName,
+            stageName: req.body.stageName,
             site: req.body.site,
-            link: req.body.link,
             notes: req.body.notes,
             revenue: req.body.revenue
         });
