@@ -1,4 +1,5 @@
-import {useParams, useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
+import {useEffect, useState} from 'react';
 import {Link, useNavigate  } from 'react-router-dom';
 import sendRequest from '../../services/sendRequest';
 
@@ -40,7 +41,7 @@ export default function PatronDetailPage() {
         <h3>Strands</h3>
         {patron.strands && patron.strands.length > 0 ? (
             <ul>
-                {patron.strands.ap((strand) => (
+                {patron.strands.map((strand) => (
                     <li key={strand.id}>
                         <strong>{strand.site}</strong> ({strand.stageName})<br />
                         Notes: {strand.notes}<br />

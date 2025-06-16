@@ -48,7 +48,7 @@ export default function PatronListPage() {
                             }}
                         >
                             <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>
-                                {patron.patronName}
+                             <Link to={`/patrons/${patron._id}`}>{patron.patronName}</Link>
                             </p>
                             <p style={{ marginBottom: "0.75rem" }}>{patron.generalNotes}</p>
                             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
