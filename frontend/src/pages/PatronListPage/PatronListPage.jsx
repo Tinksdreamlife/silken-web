@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function PatronListPage() {
     const [patrons, setPatrons] = useState([]);
@@ -8,6 +8,7 @@ export default function PatronListPage() {
         async function fetchPatrons() {
             const res = await fetch('/api/patrons');
             const data = await res.json();
+            console.log("Fetched patrongs:", data); // Debugging patrons issue
             setPatrons(data);
         }
         fetchPatrons();
