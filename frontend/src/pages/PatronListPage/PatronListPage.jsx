@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import sendRequest from '../../services/sendRequest';
 
 export default function PatronListPage() {
     const [patrons, setPatrons] = useState([]);
 
     useEffect(() => {
         async function fetchPatrons() {
-            const res = await fetch('/api/patrons');
-            const data = await res.json();
+            try{
+            const data = await sendRequest('/api/patrons');
             console.log("Fetched patrongs:", data); // Debugging patrons issue
             setPatrons(data);
+            } catch (err) {
+                console.error("Error fetching patrons:", err);
+                setPatrons([]); // To avoid .map crash
+            }
         }
         fetchPatrons();
     }, []);
@@ -27,14 +32,18 @@ export default function PatronListPage() {
             <h1>Patrons</h1>
             <Link to="/patrons/new">Add Patron</Link>
             <ul>
-                {patrons.map(patron => (
+                {Array.isArray(patrons) && patrons.length > 0 ? (
+                    patrons.map(patron => (
                     <li key={patron._id}>
                         {patron.patronName}
                         <Link to={`/patrons/${patron._id}/edit`}>Edit</Link>
                         <button onClick={() => handleDelete(patron._id)}>Delete</button>
                         <Link to={`/patrons/${patron._id}/strands/new`}>➕ Add Strand</Link>
                     </li>
-                ))}
+                    ))
+                ) : (
+                    <li>No patrons found</li>
+                )}
             </ul>
         </section>
     );
