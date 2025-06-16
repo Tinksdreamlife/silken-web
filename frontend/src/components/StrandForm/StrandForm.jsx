@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import sendRequest from "../../services/sendRequest";
 
 export default function AddStrandForm({ patronId, onStrandAdded }) {
-    const [formData, setformData] = useState({
+    const [formData, setFormData] = useState({
         site: "",
         stageName: "",
         notes: "",
@@ -27,16 +27,17 @@ export default function AddStrandForm({ patronId, onStrandAdded }) {
         setFormData({ ...formData, [event.target.name]: event.target.value });
     }
 
-    async function handleSubmit(event) {
-        event.preventDefault();
-        try {
-            const res = await sendRequest(`/api/patrons/${patronId}/strands`, 'POST', formData);
-            setFormData({ site: "", stagename: "", notes: "", revenue: "" });
-            if (onStrandAdded) onStrandAdded(res); //updated Patron
-        } catch (err) {
-            console.error(err);
-        }
+   async function handleSubmit(event) {
+    event.preventDefault();
+    try {
+        const updatedPatron = await sendRequest(`/api/strands/${patronId}`, 'POST', formData);
+        setFormData({ site: "", stageName: "", notes: "", revenue: "" });
+        if (onStrandAdded) onStrandAdded(updatedPatron);
+    } catch (err) {
+        console.error(err);
     }
+}
+
 
      return (
         <form onSubmit={handleSubmit}>
@@ -65,10 +66,11 @@ export default function AddStrandForm({ patronId, onStrandAdded }) {
                 required
             />
 
-            <label>Revenue:</label>
+            <label>Revenue ($):</label>
             <input
-                type="text"
+                type="number"
                 name="revenue"
+                step="0.01"
                 value={formData.revenue}
                 onChange={handleChange}
                 required
