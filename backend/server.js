@@ -2,7 +2,7 @@ const path = require('path'); // Built into Node
 const express = require('express');
 const logger = require('morgan');
 const app = express();
-const ensureLoggedIn = require('../middleware/ensureLoggedIn');
+const ensureLoggedIn = require('./middleware/ensureLoggedIn');
 
 // Process the secrets/config vars in .env
 require('dotenv').config();

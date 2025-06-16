@@ -23,8 +23,12 @@ export default function PatronListPage() {
         const confirmDelete = window.confirm("Are you sure you want to delete this patron?");
         if (!confirmDelete) return;
 
-        await fetch(`/api/patrons/${id}`, { method: 'DELETE' });
+        try{
+        await sendRequest(`/api/patrons/${id}`, 'DELETE');
         setPatrons(patrons.filter((patron) => patron._id !== id));
+    } catch (err) {
+        console.error('Error deleting patron:', err);
+    }
     }
 
     return (
