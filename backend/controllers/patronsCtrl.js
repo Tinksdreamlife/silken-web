@@ -1,4 +1,5 @@
 const Patron = require('../models/patronModel');
+const Strand = require('../models/strandModel');
 
 module.exports = {
     index,

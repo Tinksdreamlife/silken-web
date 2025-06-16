@@ -12,4 +12,4 @@ const strandSchema = new Schema ({
     timestamps: true
 });
 
-module.exports = strandSchema
+module.exports = mongoose.model('Strand', strandSchema);

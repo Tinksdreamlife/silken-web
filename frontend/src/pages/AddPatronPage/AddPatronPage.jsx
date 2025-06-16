@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {useNavigate} from "react-router";
+import sendRequest from "../../services/sendRequest";
 
 export default function AddPatronPage() {
     const navigate = useNavigate();
@@ -11,12 +12,16 @@ export default function AddPatronPage() {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        await fetch('/api/patrons', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(formData),
-        });
-        navigate('/patrons'); 
+        try {
+            const data = {
+                patronName: formData.patronName,
+                generalNotes: formData.generalNotes,
+            };
+        await sendRequest('/api/patrons', 'POST', data); 
+        navigate('/patrons');
+        } catch (err) {
+            console.error('Error adding patron:', err);
+        }
     }
         return (
             <div>
@@ -38,5 +43,6 @@ export default function AddPatronPage() {
                     <button type="submit">Add Patron</button>
                 </form>
             </div>
-        )
-    };
+        );
+    }
+    

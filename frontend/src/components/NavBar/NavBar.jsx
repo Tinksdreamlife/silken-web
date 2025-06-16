@@ -18,7 +18,7 @@ export default function NavBar({ user, setUser }) {
       &nbsp; | &nbsp;
       {user ? (
         <>
-          <NavLink to="/patrons">My Patrons</NavLink>
+          <NavLink to="/patrons" end>My Patrons</NavLink>
           &nbsp; | &nbsp;
           <NavLink to="/patrons/new">Add Patron</NavLink>
           &nbsp; | &nbsp;
