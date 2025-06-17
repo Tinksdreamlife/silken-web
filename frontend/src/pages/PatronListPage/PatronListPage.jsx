@@ -53,10 +53,10 @@ export default function PatronListPage() {
                             </p>
                             <p style={{ marginBottom: "0.75rem" }}>{patron.generalNotes}</p>
                             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-                                <Link to={`/patrons/${patron._id}/edit`} className="btn small">✏️ Edit</Link>
-                                <button className="btn small" onClick={() => handleDelete(patron._id)}>🗑️ Delete</button>
+                                <Link to={`/patrons/${patron._id}/edit`} className="btn small">Edit</Link>
+                                <button className="btn small" onClick={() => handleDelete(patron._id)}>Delete</button>
                                 <Link to={`/patrons/${patron._id}/strands/new`} className="btn small">
-                                    ➕ Add Strand
+                                    Add Strand
                                 </Link>
                             </div>
                         </li>
