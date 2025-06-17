@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { signUp } from '../../services/authService';
+import PreLoginWrapper from '../../components/Layout/PreLoginWrapper';
 
 export default function SignUpPage({ setUser }) {
   const [formData, setFormData] = useState({
@@ -33,6 +34,7 @@ export default function SignUpPage({ setUser }) {
 
   return (
     <>
+    <PreLoginWrapper>
       <h2>Sign Up!</h2>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <label>Name</label>
@@ -72,6 +74,7 @@ export default function SignUpPage({ setUser }) {
         </button>
       </form>
       <p className="error-message">&nbsp;{errorMsg}</p>
+  </PreLoginWrapper>
     </>
   );
 }
