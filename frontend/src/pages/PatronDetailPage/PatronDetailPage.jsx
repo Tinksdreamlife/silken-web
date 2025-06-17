@@ -21,8 +21,8 @@ export default function PatronDetailPage() {
     }, [id]);
 
     async function handleDeleteStrand(strandId) {
-        const confirm = window.confirm('Delete this strand?');
-        if (!confirm) return;
+        const confirmed = window.confirm('Delete this strand?');
+        if (!confirmed) return;
         try {
             const updatedPatron = await sendRequest(`/api/strands/${strandId}`, 'DELETE');
             setPatron(updatedPatron);
@@ -42,12 +42,12 @@ export default function PatronDetailPage() {
         {patron.strands && patron.strands.length > 0 ? (
             <ul>
                 {patron.strands.map((strand) => (
-                    <li key={strand.id}>
+                    <li key={strand._id}>
                         <strong>{strand.site}</strong> ({strand.stageName})<br />
                         Notes: {strand.notes}<br />
                         Revenue: ${strand.revenue?.toFixed(2)}<br />
                         <Link to={`/strands/${strand._id}/edit`}>✏️ Edit</Link>{" "}
-                        <button onClick={() => handleDeleteStrand._id}>🗑️ Delete</button>
+                        <button onClick={() => handleDeleteStrand(strand._id)}>🗑️ Delete</button>
                     </li>
                 ))}
             </ul>

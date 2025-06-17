@@ -35,10 +35,18 @@ async function create(req, res) {
 // DELETE - remove a strand from a Patron and delete the strand document
 async function deleteStrand(req, res) {
     try {
-        const patron = await Patron.findById(req.params.id);
+        // Looking for the strand first to get the patron's name or id
+        const strand = await Strand.findById(req.params.strandId);
+        if (!strand) return res.status(404).json({ error: 'Strand not found' });
+
+        // Testing for bugs in delete fucntionality
+        console.log('Looking for patron with strand ID:', req.params.strandId);
+
+        // Finding the patron who has the strand in the strand array
+        const patron = await Patron.findOne({strands: req.params.strandId});
         if (!patron) return res.status(404).json({ error: 'Patron not found' });
 
-        // Remove the strand ObjectId reference from the patron.strands array
+        // Remove the strand Id reference from the patron's strands array
         patron.strands.pull(req.params.strandId);
         await patron.save();
 
@@ -56,10 +64,10 @@ async function deleteStrand(req, res) {
 async function show(req, res) {
     try {
         const strand = await Strand.findById(req.params.strandId);
-if (!strand) return res. status(404).json({ error: 'Strand not found'});
-res.json(strand);
+        if (!strand) return res.status(404).json({ error: 'Strand not found' });
+        res.json(strand);
     } catch (err) {
-        res.status(400).json({ error: err.message});
+        res.status(400).json({ error: err.message });
     }
 }
 
@@ -69,11 +77,11 @@ async function update(req, res) {
         const strand = await Strand.findByIdAndUpdate(
             req.params.strandId,
             req.body,
-            {new: true}
+            { new: true }
         );
-        if (!strand) return res.status(404).json({ error: "Strand not found"});
+        if (!strand) return res.status(404).json({ error: "Strand not found" });
         res.json(strand);
     } catch (err) {
-        res.status(400).json({ error: err.message});
+        res.status(400).json({ error: err.message });
     }
 }
