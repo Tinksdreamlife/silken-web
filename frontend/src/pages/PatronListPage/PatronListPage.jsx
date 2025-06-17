@@ -32,6 +32,7 @@ export default function PatronListPage() {
     }
 
     return (
+        <div className="main-wrapper">
         <section>
             <h1>Patrons</h1>
             <Link to="/patrons/new">Add Patron</Link>
@@ -65,5 +66,6 @@ export default function PatronListPage() {
                 )}
             </ul>
         </section>
+        </div>
             );
         }

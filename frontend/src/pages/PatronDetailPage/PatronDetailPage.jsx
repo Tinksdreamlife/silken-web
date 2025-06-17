@@ -33,7 +33,7 @@ export default function PatronDetailPage() {
     if (!patron) return <p>Loading...</p>
 
     return (
-        <div>
+        <div className="main-wrapper">
             <h2>{patron.patronName}</h2>
             <p>{patron.generalNotes}</p>
             <Link to={`/patrons/${id}/strands/new`}>➕ Add New Strand</Link>

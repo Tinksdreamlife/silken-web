@@ -24,7 +24,7 @@ export default function AddPatronPage() {
         }
     }
         return (
-            <div>
+            <div className="main-wrapper">
                 <h2>Add Patron</h2>
                 <form onSubmit={handleSubmit}>
                     <label>Patron Name:</label>

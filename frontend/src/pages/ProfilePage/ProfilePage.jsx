@@ -34,7 +34,7 @@ export default function ProfilePage() {
     if (!profile) return <p>Loading profile...</p>;
 
     return (
-        <div>
+        <div className="main-wrapper">
             <h1>My Profile</h1>
             <p><strong>Stage Names:</strong> {profile?.stageNames.length ? profile.stageNames.map(name => name.trim()).join(', ') : 'N/A'}</p>
             <p><strong>Sites:</strong> {profile?.sites?.length ? profile.sites.map(site => site.trim()).join(', ') : 'None listed'}</p>

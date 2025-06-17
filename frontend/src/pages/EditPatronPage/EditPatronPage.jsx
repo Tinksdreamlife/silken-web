@@ -31,7 +31,7 @@ export default function EditPatronPage() {
     }
 
     return (
-        <div>
+        <div className="main-wrapper">
             <h2>Edit Patron</h2>
             <Link to={`/patrons/${formData._id}/strands/new`}>➕ Add Strand</Link>
             <form onSubmit={handleSubmit}>

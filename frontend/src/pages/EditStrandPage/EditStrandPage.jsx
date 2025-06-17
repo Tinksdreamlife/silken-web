@@ -53,7 +53,7 @@ export default function EditStrandPage() {
     }
 
     return (
-        <div>
+        <div className="main-wrapper">
             <h2>Edit Strand</h2>
         <form onSubmit={handleSubmit}>
             <label>Site:</label>

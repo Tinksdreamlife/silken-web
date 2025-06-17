@@ -52,6 +52,7 @@ export default function EditProfilePage() {
     }
 
     return (
+        <div className="main-wrapper">
         <form onSubmit={handleSubmit}>
             <label>
                 Stage Names (comma separated):
@@ -63,5 +64,6 @@ export default function EditProfilePage() {
             </label><br />
             <button type="submit">Save Profile</button>
         </form>
+        </div>
     );
 }

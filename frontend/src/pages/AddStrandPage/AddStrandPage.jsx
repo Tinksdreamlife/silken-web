@@ -25,7 +25,7 @@ export default function AddStrandPage() {
     }
 
     return (
-        <div>
+        <div className="main-wrapper">
             <h1>Add New Strand</h1>
             {patron && (
                 <>
