@@ -9,3 +9,18 @@
   justify-content: center;
   align-items: center;
 }
+
+body {
+  background-color: #e5e7eb; /* light color outer layer*/
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-wrapper {
+  max-width: 1000px;
+  margin: auto;
+  background-color: #ffffff; /* inner content background */
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0.05);
+}
