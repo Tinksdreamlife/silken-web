@@ -8,13 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-body {
-  background-color: #e5e7eb; /* light color outer layer*/
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
+}  
 
 .main-wrapper {
   max-width: 1000px;
