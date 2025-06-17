@@ -62,7 +62,7 @@ export default function EditProfilePage() {
                 Sites (comma separated):
                 <input type="text" name="sites" value={formData.sites} onChange={handleChange} />
             </label><br />
-            <button type="submit">Save Profile</button>
+            <button className="btn small" type="submit">Save Profile</button>
         </form>
         </div>
     );

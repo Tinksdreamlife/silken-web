@@ -33,7 +33,7 @@ export default function EditPatronPage() {
     return (
         <div className="main-wrapper">
             <h2>Edit Patron</h2>
-            <Link to={`/patrons/${formData._id}/strands/new`}>➕ Add Strand</Link>
+            <Link to={`/patrons/${formData._id}/strands/new`} className="btn small">➕ Add Strand</Link>
             <form onSubmit={handleSubmit}>
                 <label>Patron Name:</label>
                 <input
@@ -47,7 +47,7 @@ export default function EditPatronPage() {
                     value={formData.generalNotes}
                     onChange={(event) => setFormData({ ...formData, generalNotes: event.target.value })}
                 />
-                <button type="submit">Save Changes</button>
+                <button className="btn small" type="submit">Save Changes</button>
             </form>
         </div>
     );

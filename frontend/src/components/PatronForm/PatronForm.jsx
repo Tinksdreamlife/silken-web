@@ -40,7 +40,7 @@ export default function PatronForm({ onAdd }) {
                 onChange={handleChange}
                 placeholder="General Notes"
                 />
-                <button type="submit">Add Patron</button>
+                <button className="btn small" type="submit">Add Patron</button>
                 </form>
         );
     }

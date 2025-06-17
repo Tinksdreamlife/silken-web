@@ -76,7 +76,7 @@ export default function AddStrandForm({ patronId, onStrandAdded }) {
                 required
             />
 
-            <button type="submit">Add Strand</button>
+            <button className="btn small" type="submit">Add Strand</button>
         </form>
     );
 }

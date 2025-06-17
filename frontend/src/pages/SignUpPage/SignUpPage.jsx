@@ -67,7 +67,7 @@ export default function SignUpPage({ setUser }) {
           onChange={handleChange}
           required
         />
-        <button type="submit" disabled={disable}>
+        <button className="btn small" type="submit" disabled={disable}>
           SIGN UP
         </button>
       </form>

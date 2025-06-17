@@ -26,7 +26,7 @@ export default function ProfilePage() {
         return (
             <div>
                 <h1> No profile found</h1>
-                <Link to="/profile/edit">Create Your Profile</Link>
+                <Link to="/profile/edit" className="btn small">Create Your Profile</Link>
             </div>
         );
     }
@@ -38,7 +38,7 @@ export default function ProfilePage() {
             <h1>My Profile</h1>
             <p><strong>Stage Names:</strong> {profile?.stageNames.length ? profile.stageNames.map(name => name.trim()).join(', ') : 'N/A'}</p>
             <p><strong>Sites:</strong> {profile?.sites?.length ? profile.sites.map(site => site.trim()).join(', ') : 'None listed'}</p>
-            <Link to="/profile/edit">Update Profile</Link>
+            <Link to="/profile/edit" className="btn small">Update Profile</Link>
         </div>
     );
 }

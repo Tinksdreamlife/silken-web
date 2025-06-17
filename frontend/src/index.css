@@ -81,3 +81,25 @@ h2 {
 .error-message {
   color: rgb(166, 29, 29);
 }
+
+.btn {
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 0.5em 0.5em 0.5em 0;
+  background-color: #1a1a1a;
+  color: whitesmoke;
+  text-decoration: none;
+  border-radius: 0.5vmin;
+  font-weight: 500;
+}
+
+.btn:hover {
+  background-color: white;
+  color: #1a1a1a;
+  border: 0.5vmin solid #1a1a1a;
+}
+
+.btn.small {
+  font-size: 0.9rem;
+  padding: 0.3em 0.8em;
+}

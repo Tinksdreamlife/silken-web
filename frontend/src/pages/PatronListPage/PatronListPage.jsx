@@ -35,7 +35,7 @@ export default function PatronListPage() {
         <div className="main-wrapper">
         <section>
             <h1>Patrons</h1>
-            <Link to="/patrons/new">Add Patron</Link>
+            <Link to="/patrons/new" className="btn small">Add Patron</Link>
             <ul>
                 {Array.isArray(patrons) && patrons.length > 0 ? (
                     patrons.map((patron) => (
@@ -49,13 +49,13 @@ export default function PatronListPage() {
                             }}
                         >
                             <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>
-                             <Link to={`/patrons/${patron._id}`}>{patron.patronName}</Link>
+                             <Link to={`/patrons/${patron._id}`} className="btn small">{patron.patronName}</Link>
                             </p>
                             <p style={{ marginBottom: "0.75rem" }}>{patron.generalNotes}</p>
                             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-                                <Link to={`/patrons/${patron._id}/edit`}>✏️ Edit</Link>
-                                <button onClick={() => handleDelete(patron._id)}>🗑️ Delete</button>
-                                <Link to={`/patrons/${patron._id}/strands/new`}>
+                                <Link to={`/patrons/${patron._id}/edit`} className="btn small">✏️ Edit</Link>
+                                <button className="btn small" onClick={() => handleDelete(patron._id)}>🗑️ Delete</button>
+                                <Link to={`/patrons/${patron._id}/strands/new`} className="btn small">
                                     ➕ Add Strand
                                 </Link>
                             </div>

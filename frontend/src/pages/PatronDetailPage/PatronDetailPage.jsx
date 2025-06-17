@@ -36,7 +36,7 @@ export default function PatronDetailPage() {
         <div className="main-wrapper">
             <h2>{patron.patronName}</h2>
             <p>{patron.generalNotes}</p>
-            <Link to={`/patrons/${id}/strands/new`}>➕ Add New Strand</Link>
+            <Link to={`/patrons/${id}/strands/new`} className="btn small">➕ Add New Strand</Link>
         
         <h3>Strands</h3>
         {patron.strands && patron.strands.length > 0 ? (
@@ -46,8 +46,8 @@ export default function PatronDetailPage() {
                         <strong>{strand.site}</strong> ({strand.stageName})<br />
                         Notes: {strand.notes}<br />
                         Revenue: ${strand.revenue?.toFixed(2)}<br />
-                        <Link to={`/strands/${strand._id}/edit`}>✏️ Edit</Link>{" "}
-                        <button onClick={() => handleDeleteStrand(strand._id)}>🗑️ Delete</button>
+                        <Link to={`/strands/${strand._id}/edit`} className="btn small">✏️ Edit</Link>{" "}
+                        <button className="btn small" onClick={() => handleDeleteStrand(strand._id)}>🗑️ Delete</button>
                     </li>
                 ))}
             </ul>

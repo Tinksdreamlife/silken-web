@@ -103,7 +103,7 @@ export default function EditStrandPage() {
             required
             />
 
-            <button type="submit">Save Changes</button>
+            <button className="btn small" type="submit">Save Changes</button>
         </form>
         </div>
     );
