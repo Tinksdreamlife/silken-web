@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {useNavigate} from "react-router";
 import sendRequest from "../../services/sendRequest";
+import PageWrapper from "../../components/Layout/PageWrapper";
 
 export default function AddPatronPage() {
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ export default function AddPatronPage() {
         }
     }
         return (
-            <div className="main-wrapper">
+             <PageWrapper>
                 <h2>Add Patron</h2>
                 <form onSubmit={handleSubmit}>
                     <label>Patron Name:</label>
@@ -42,7 +43,7 @@ export default function AddPatronPage() {
 
                     <button className="btn small" type="submit">Add Patron</button>
                 </form>
-            </div>
+            </PageWrapper>
         );
     }
     

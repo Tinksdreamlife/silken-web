@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {useParams, useNavigate} from "react-router";
 import StrandForm from "../../components/StrandForm/StrandForm";
 import sendRequest from "../../services/sendRequest";
+import PageWrapper from "../../components/Layout/PageWrapper";
 
 export default function AddStrandPage() {
     const { id } = useParams(); //Patron ID from the URL
@@ -25,7 +26,7 @@ export default function AddStrandPage() {
     }
 
     return (
-        <div className="main-wrapper">
+        <PageWrapper>
             <h1>Add New Strand</h1>
             {patron && (
                 <>
@@ -36,6 +37,6 @@ export default function AddStrandPage() {
                 onStrandAdded={handleStrandAdded} />
                 </>
             )}
-        </div>
+        </PageWrapper>
     );
 }

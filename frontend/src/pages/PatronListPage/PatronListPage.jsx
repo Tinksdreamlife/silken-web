@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import sendRequest from '../../services/sendRequest';
+import PageWrapper from "../../components/Layout/PageWrapper";
 
 export default function PatronListPage() {
     const [patrons, setPatrons] = useState([]);
@@ -32,7 +33,7 @@ export default function PatronListPage() {
     }
 
     return (
-        <div className="main-wrapper">
+        <PageWrapper>
         <section>
             <h1>Patrons</h1>
             <Link to="/patrons/new" className="btn small">Add Patron</Link>
@@ -66,6 +67,6 @@ export default function PatronListPage() {
                 )}
             </ul>
         </section>
-        </div>
+        </PageWrapper>
             );
         }

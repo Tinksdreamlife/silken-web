@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getProfile, createProfile, updateProfile } from '../../services/profileService';
 import { useNavigate } from 'react-router-dom';
+import PageWrapper from '../../components/Layout/PageWrapper';
 
 export default function EditProfilePage() {
     const [formData, setFormData] = useState({ stageNames: '', sites: '' });
@@ -52,7 +53,7 @@ export default function EditProfilePage() {
     }
 
     return (
-        <div className="main-wrapper">
+        <PageWrapper>
         <form onSubmit={handleSubmit}>
             <label>
                 Stage Names (comma separated):
@@ -64,6 +65,6 @@ export default function EditProfilePage() {
             </label><br />
             <button className="btn small" type="submit">Save Profile</button>
         </form>
-        </div>
+        </PageWrapper>
     );
 }

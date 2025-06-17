@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getProfile } from "../../services/profileService";
 import { Link } from 'react-router-dom';
+import PageWrapper from "../../components/Layout/PageWrapper";
 
 export default function ProfilePage() {
     const [profile, setProfile] = useState(null);
@@ -34,11 +35,11 @@ export default function ProfilePage() {
     if (!profile) return <p>Loading profile...</p>;
 
     return (
-        <div className="main-wrapper">
+        <PageWrapper>
             <h1>My Profile</h1>
             <p><strong>Stage Names:</strong> {profile?.stageNames.length ? profile.stageNames.map(name => name.trim()).join(', ') : 'N/A'}</p>
             <p><strong>Sites:</strong> {profile?.sites?.length ? profile.sites.map(site => site.trim()).join(', ') : 'None listed'}</p>
             <Link to="/profile/edit" className="btn small">Update Profile</Link>
-        </div>
+        </PageWrapper>
     );
 }

@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import sendRequest from '../../services/sendRequest';
+import PageWrapper from '../../components/Layout/PageWrapper';
 
 export default function EditStrandPage() {
     const {strandId} = useParams();
@@ -53,7 +54,7 @@ export default function EditStrandPage() {
     }
 
     return (
-        <div className="main-wrapper">
+        <PageWrapper>
             <h2>Edit Strand</h2>
         <form onSubmit={handleSubmit}>
             <label>Site:</label>
@@ -105,6 +106,6 @@ export default function EditStrandPage() {
 
             <button className="btn small" type="submit">Save Changes</button>
         </form>
-        </div>
+        </PageWrapper>
     );
 }

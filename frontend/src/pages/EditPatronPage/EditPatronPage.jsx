@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { Link } from 'react-router';
 import sendRequest from '../../services/sendRequest';
+import PageWrapper from '../../components/Layout/PageWrapper';
 
 export default function EditPatronPage() {
     const { id } = useParams();
@@ -31,7 +32,7 @@ export default function EditPatronPage() {
     }
 
     return (
-        <div className="main-wrapper">
+        <PageWrapper>
             <h2>Edit Patron</h2>
             <Link to={`/patrons/${formData._id}/strands/new`} className="btn small">➕ Add Strand</Link>
             <form onSubmit={handleSubmit}>
@@ -49,6 +50,6 @@ export default function EditPatronPage() {
                 />
                 <button className="btn small" type="submit">Save Changes</button>
             </form>
-        </div>
+        </PageWrapper>
     );
 }

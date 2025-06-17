@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import {Link, useNavigate  } from 'react-router-dom';
 import sendRequest from '../../services/sendRequest';
+import PageWrapper from '../../components/Layout/PageWrapper';
 
 export default function PatronDetailPage() {
     const {id} = useParams(); //patron ID
@@ -33,7 +34,7 @@ export default function PatronDetailPage() {
     if (!patron) return <p>Loading...</p>
 
     return (
-        <div className="main-wrapper">
+        <PageWrapper>
             <h2>{patron.patronName}</h2>
             <p>{patron.generalNotes}</p>
             <Link to={`/patrons/${id}/strands/new`} className="btn small">Add New Strand</Link>
@@ -54,6 +55,6 @@ export default function PatronDetailPage() {
         ) :(
             <p>No strands added yet.</p>
         )}
-        </div>
+        </PageWrapper>
     );
 }
