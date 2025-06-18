@@ -14,6 +14,7 @@ import AddStrandPage from '../AddStrandPage/AddStrandPage';
 import EditProfilePage from '../EditProfilePage/EditProfilePage';
 import PatronDetailPage from '../PatronDetailPage/PatronDetailPage';
 import EditStrandPage from '../EditStrandPage/EditStrandPage';
+import DashboardPage from '../DashboardPage/DashboardPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -24,7 +25,7 @@ export default function App() {
       <section id="main-section">
         {user ? (
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/profile" element={<ProfilePage key={Date.now()}/>} />
             <Route path="/profile/edit" element={<EditProfilePage />} />
             <Route path="/patrons" element={<PatronListPage />} />
