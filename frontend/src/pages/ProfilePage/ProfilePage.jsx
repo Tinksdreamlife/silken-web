@@ -23,23 +23,32 @@ export default function ProfilePage() {
         fetchProfile();
     }, []);
 
-    if (notFound) {
-        return (
-            <div>
-                <h1> No profile found</h1>
-                <Link to="/profile/edit" className="btn small">Create Your Profile</Link>
-            </div>
-        );
-    }
-
-    if (!profile) return <p>Loading profile...</p>;
-
     return (
         <PageWrapper>
-            <h1>My Profile</h1>
-            <p><strong>Stage Names:</strong> {profile?.stageNames.length ? profile.stageNames.map(name => name.trim()).join(', ') : 'N/A'}</p>
-            <p><strong>Sites:</strong> {profile?.sites?.length ? profile.sites.map(site => site.trim()).join(', ') : 'None listed'}</p>
-            <Link to="/profile/edit" className="btn small">Update Profile</Link>
+            {notFound ? (
+                <>
+                    <h1> No profile found</h1>
+                    <Link to="/profile/edit" className="btn small">Create Your Profile</Link>
+                </>
+            ) : !profile ? (
+                <p>Loading profile...</p>
+            ) : (
+                <>
+                    <h1>My Profile</h1>
+                    <p>
+                        <strong>Stage Names:</strong>{" "}
+                        {profile?.stageNames.length
+                            ? profile.stageNames.map(name => name.trim()).join(', ')
+                            : 'N/A'}
+                    </p>
+                    <p>
+                        <strong>Sites:</strong>{" "}
+                        {profile?.sites?.length
+                            ? profile.sites.map(site => site.trim()).join(', ')
+                            : 'None listed'}</p>
+                    <Link to="/profile/edit" className="btn small">Update Profile</Link>
+                </>
+            )}
         </PageWrapper>
     );
 }
