@@ -7,9 +7,7 @@ const ensureLoggedIn = require('../middleware/ensureLoggedIn');
 router.post('/', ensureLoggedIn, profilesCtrl.create);
 
 // Pull current user's profile
-router.get('/me', ensureLoggedIn, profilesCtrl.show); 
-// '/me' is  a common convention to represent 
-// currently authenticated user's profile
+router.get('/me', ensureLoggedIn, profilesCtrl.show);
 
 // Update profile
 router.put('/', ensureLoggedIn, profilesCtrl.update);

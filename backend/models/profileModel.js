@@ -10,7 +10,7 @@ const profileSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: true,
-      unique: true, // to designate one profile per user
+      unique: true,
     },
     name: {
       type: String,
@@ -19,13 +19,13 @@ const profileSchema = new Schema(
     email: {
       type: String,
       required: true,
-      lowercase: true, 
+      lowercase: true,
       trim: true,
     },
     stageNames: [
       {
         type: String,
-        required: true, // required at least one site
+        required: true,
       },
     ],
     sites: [

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const patronSchema = new Schema({
     patronName: { type: String, required: true },
     generalNotes: String,
-    strands: [{ type: Schema.ObjectId, ref: 'Strand'}], //embedded array of strands (with site, link, notes)
+    strands: [{ type: Schema.ObjectId, ref: 'Strand' }],
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',

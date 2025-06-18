@@ -51,13 +51,14 @@ It’s intuitive, discreet, and tailored — finally, a system that understands 
 - MongoDB
 - Mongoose
 - JavaScript
+- HTML
 - CSS
 - JSON Web Tokens (JWT)
 - ChatGPT 
 
 # Getting Started
 
-Try the live demo here: Silken Web Demo ([The Silken Web on Heroku](https://velvetbook-ab9c6fcfe5d4.herokuapp.com/)) UPDATE THIS LINK
+Try the live demo here: Silken Web Demo ([The Silken Web on Heroku](https://silkenweb-9989575de358.herokuapp.com/)) 
 
 # Roadmap & Next Steps
 

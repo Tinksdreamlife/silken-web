@@ -33,19 +33,15 @@ async function update(req, res) {
 
         if (!profile) return res.status(404).json({ error: 'Profile not found' });
 
-        console.log('Incoming update request body:', req.body); //Troubleshooting profile
-
         if (req.body.stageNames) profile.stageNames = req.body.stageNames;
         if (req.body.sites) profile.sites = req.body.sites;
 
         await profile.save();
 
-        console.log('Updated profile', profile); //Troubleshooting profile
-
         res.json(profile);
 
     } catch (err) {
-        console.error('Error in profile update:', err); //Troubleshooting profile
+        console.error('Error in profile update:', err);
         res.status(400).json({ error: err.message });
     }
 }

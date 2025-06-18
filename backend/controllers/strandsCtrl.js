@@ -39,11 +39,8 @@ async function deleteStrand(req, res) {
         const strand = await Strand.findById(req.params.strandId);
         if (!strand) return res.status(404).json({ error: 'Strand not found' });
 
-        // Testing for bugs in delete fucntionality
-        console.log('Looking for patron with strand ID:', req.params.strandId);
-
         // Finding the patron who has the strand in the strand array
-        const patron = await Patron.findOne({strands: req.params.strandId});
+        const patron = await Patron.findOne({ strands: req.params.strandId });
         if (!patron) return res.status(404).json({ error: 'Patron not found' });
 
         // Remove the strand Id reference from the patron's strands array
