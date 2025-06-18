@@ -11,7 +11,7 @@ export default function SignUpPage({ setUser }) {
     confirm: '',
   });
   const [errorMsg, setErrorMsg] = useState('');
-   
+
   const navigate = useNavigate();
 
   function handleChange(evt) {
@@ -34,47 +34,47 @@ export default function SignUpPage({ setUser }) {
 
   return (
     <>
-    <PreLoginWrapper>
-      <h2>Sign Up!</h2>
-      <form autoComplete="off" onSubmit={handleSubmit}>
-        <label>Name</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <label>Confirm</label>
-        <input
-          type="password"
-          name="confirm"
-          value={formData.confirm}
-          onChange={handleChange}
-          required
-        />
-        <button className="btn small" type="submit" disabled={disable}>
-          SIGN UP
-        </button>
-      </form>
-      <p className="error-message">&nbsp;{errorMsg}</p>
-  </PreLoginWrapper>
+      <PreLoginWrapper>
+        <h2>Sign Up!</h2>
+        <form autoComplete="off" onSubmit={handleSubmit}>
+          <label>Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <label>Confirm</label>
+          <input
+            type="password"
+            name="confirm"
+            value={formData.confirm}
+            onChange={handleChange}
+            required
+          />
+          <button className="btn small" type="submit" disabled={disable}>
+            SIGN UP
+          </button>
+        </form>
+        <p className="error-message">&nbsp;{errorMsg}</p>
+      </PreLoginWrapper>
     </>
   );
 }

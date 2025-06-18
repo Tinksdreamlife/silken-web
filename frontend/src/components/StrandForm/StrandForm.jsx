@@ -27,19 +27,19 @@ export default function AddStrandForm({ patronId, onStrandAdded }) {
         setFormData({ ...formData, [event.target.name]: event.target.value });
     }
 
-   async function handleSubmit(event) {
-    event.preventDefault();
-    try {
-        const updatedPatron = await sendRequest(`/api/strands/${patronId}`, 'POST', formData);
-        setFormData({ site: "", stageName: "", notes: "", revenue: "" });
-        if (onStrandAdded) onStrandAdded(updatedPatron);
-    } catch (err) {
-        console.error(err);
+    async function handleSubmit(event) {
+        event.preventDefault();
+        try {
+            const updatedPatron = await sendRequest(`/api/strands/${patronId}`, 'POST', formData);
+            setFormData({ site: "", stageName: "", notes: "", revenue: "" });
+            if (onStrandAdded) onStrandAdded(updatedPatron);
+        } catch (err) {
+            console.error(err);
+        }
     }
-}
 
 
-     return (
+    return (
         <form onSubmit={handleSubmit}>
             <label>Site:</label>
             <select name="site" value={formData.site} onChange={handleChange} required>

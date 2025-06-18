@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {useNavigate} from "react-router";
+import { useNavigate } from "react-router";
 import sendRequest from "../../services/sendRequest";
 import PageWrapper from "../../components/Layout/PageWrapper";
 
@@ -18,32 +18,32 @@ export default function AddPatronPage() {
                 patronName: formData.patronName,
                 generalNotes: formData.generalNotes,
             };
-        await sendRequest('/api/patrons', 'POST', data); 
-        navigate('/patrons');
+            await sendRequest('/api/patrons', 'POST', data);
+            navigate('/patrons');
         } catch (err) {
             console.error('Error adding patron:', err);
         }
     }
-        return (
-             <PageWrapper>
-                <h2>Add Patron</h2>
-                <form onSubmit={handleSubmit}>
-                    <label>Patron Name:</label>
-                    <input 
+    return (
+        <PageWrapper>
+            <h2>Add Patron</h2>
+            <form onSubmit={handleSubmit}>
+                <label>Patron Name:</label>
+                <input
                     value={formData.patronName}
-                    onChange={(event) => setFormData({ ...formData, patronName: event.target.value})}
+                    onChange={(event) => setFormData({ ...formData, patronName: event.target.value })}
                     required
-                    />
+                />
 
-                    <label>Notes:</label>
-                    <textarea 
+                <label>Notes:</label>
+                <textarea
                     value={formData.generalNotes}
-                    onChange={(event) => setFormData({ ...formData, generalNotes: event.target.value})}
-                    />
+                    onChange={(event) => setFormData({ ...formData, generalNotes: event.target.value })}
+                />
 
-                    <button className="btn small" type="submit">Add Patron</button>
-                </form>
-            </PageWrapper>
-        );
-    }
-    
+                <button className="btn small" type="submit">Add Patron</button>
+            </form>
+        </PageWrapper>
+    );
+}
+

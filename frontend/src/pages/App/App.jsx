@@ -27,7 +27,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Navigate to="/dashboard" />} />
             <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/profile" element={<ProfilePage key={Date.now()}/>} />
+            <Route path="/profile" element={<ProfilePage key={Date.now()} />} />
             <Route path="/profile/edit" element={<EditProfilePage />} />
             <Route path="/patrons" element={<PatronListPage />} />
             <Route path="patrons/new" element={<AddPatronPage />} />
@@ -39,7 +39,7 @@ export default function App() {
           </Routes>
         ) : (
           <Routes>
-            <Route path="/" element={<HomePage user={user}/>} />
+            <Route path="/" element={<HomePage user={user} />} />
             <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
             <Route path="/login" element={<LogInPage setUser={setUser} />} />
             <Route path="*" element={null} />

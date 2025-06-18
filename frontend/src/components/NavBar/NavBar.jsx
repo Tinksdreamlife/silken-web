@@ -9,7 +9,6 @@ export default function NavBar({ user, setUser }) {
     logOut();
     setUser(null);
     navigate('/');
-    // The <Link> that was clicked will navigate to "/"
   }
 
   return (
@@ -25,7 +24,7 @@ export default function NavBar({ user, setUser }) {
           <NavLink to="/profile">Profile</NavLink>
           &nbsp; | &nbsp;
           <Link to="/" onClick={handleLogOut}>Log Out</Link>
-           &nbsp; | &nbsp;
+          &nbsp; | &nbsp;
           <span>Welcome, {user.name}</span>
         </>
       ) : (

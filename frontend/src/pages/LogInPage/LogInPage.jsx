@@ -9,7 +9,7 @@ export default function LogInPage({ setUser }) {
     password: '',
   });
   const [errorMsg, setErrorMsg] = useState('');
-  
+
   const navigate = useNavigate();
 
   async function handleSubmit(evt) {
@@ -30,29 +30,29 @@ export default function LogInPage({ setUser }) {
 
   return (
     <>
-    <PreLoginWrapper>
-      <h2>Log In!</h2>
-      <form autoComplete="off" onSubmit={handleSubmit}>
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <button className="btn small" type="submit">LOG IN</button>
-      </form>
-      <p className="error-message">&nbsp;{errorMsg}</p>
-    </PreLoginWrapper>
+      <PreLoginWrapper>
+        <h2>Log In!</h2>
+        <form autoComplete="off" onSubmit={handleSubmit}>
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button className="btn small" type="submit">LOG IN</button>
+        </form>
+        <p className="error-message">&nbsp;{errorMsg}</p>
+      </PreLoginWrapper>
     </>
   );
 }

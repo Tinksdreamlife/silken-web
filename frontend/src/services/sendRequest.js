@@ -7,7 +7,7 @@ export default async function sendRequest(
 ) {
 
   const options = { method };
- 
+
   if (payload instanceof FormData) {
     options.body = payload;
   } else if (payload) {

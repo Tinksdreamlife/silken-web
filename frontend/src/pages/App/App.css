@@ -8,14 +8,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}  
+}
 
 .main-wrapper {
   position: relative;
   z-index: 1;
   max-width: 1000px;
   margin: auto;
-  background-color: #ffffff; /* inner content background */
+  background-color: #ffffff;
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0.05);
@@ -41,6 +41,6 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.6); /* adjust this value for softness */
+  background-color: rgba(255, 255, 255, 0.6);
   z-index: 0;
 }

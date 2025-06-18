@@ -4,7 +4,7 @@ const BASE_URL = '/api/profile';
 
 export async function getProfile() {
     try {
-    return await sendRequest(`${BASE_URL}/me`);
+        return await sendRequest(`${BASE_URL}/me`);
     } catch (err) {
         if (err.message === 'Profile not found') {
             throw err;

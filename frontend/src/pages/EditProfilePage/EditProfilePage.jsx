@@ -21,7 +21,7 @@ export default function EditProfilePage() {
                 if (err.message === 'Profile not found') {
                     setIsNewProfile(true);
                 } else {
-                console.error("Error fetching profile:", err);
+                    console.error("Error fetching profile:", err);
                 }
             }
         }
@@ -31,7 +31,7 @@ export default function EditProfilePage() {
     async function handleSubmit(event) {
         event.preventDefault();
         try {
-            const payload ={
+            const payload = {
                 stageNames: formData.stageNames.split(',').map(s => s.trim()),
                 sites: formData.sites.split(',').map(s => s.trim())
             };
@@ -41,7 +41,7 @@ export default function EditProfilePage() {
             } else {
                 await updateProfile(payload);
             }
-            
+
             navigate('/profile');
         } catch (err) {
             console.error("Error saving profile", err);
@@ -54,17 +54,17 @@ export default function EditProfilePage() {
 
     return (
         <PageWrapper>
-        <form onSubmit={handleSubmit}>
-            <label>
-                Stage Names (comma separated):
-                <input type="text" name="stageNames" value={formData.stageNames} onChange={handleChange} />
-            </label><br />
-            <label>
-                Sites (comma separated):
-                <input type="text" name="sites" value={formData.sites} onChange={handleChange} />
-            </label><br />
-            <button className="btn small" type="submit">Save Profile</button>
-        </form>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Stage Names (comma separated):
+                    <input type="text" name="stageNames" value={formData.stageNames} onChange={handleChange} />
+                </label><br />
+                <label>
+                    Sites (comma separated):
+                    <input type="text" name="sites" value={formData.sites} onChange={handleChange} />
+                </label><br />
+                <button className="btn small" type="submit">Save Profile</button>
+            </form>
         </PageWrapper>
     );
 }

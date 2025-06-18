@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-// Add Patron function 
-
 export default function PatronForm({ onAdd }) {
     const [formData, setFormData] = useState({
         patronName: '',
@@ -16,33 +14,32 @@ export default function PatronForm({ onAdd }) {
         event.preventDefault();
         const res = await fetch('/api/patrons', {
             method: 'Post',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
         });
-            const newPatron =await res.json();
-            onAdd(newPatron);
-            setFormData({ patronName: '', generalNotes: ''});
-        }
+        const newPatron = await res.json();
+        onAdd(newPatron);
+        setFormData({ patronName: '', generalNotes: '' });
+    }
 
-        return(
-            <form onSubmit={handleSubmit}>
-                <input
+    return (
+        <form onSubmit={handleSubmit}>
+            <input
                 type="text"
                 name="patronName"
                 value={formData.patronName}
                 onChange={handleChange}
                 placeholder="Patron Name"
                 required
-                />
-                <textarea
+            />
+            <textarea
                 name="generalNotes"
                 value={formData.generalNotes}
                 onChange={handleChange}
                 placeholder="General Notes"
-                />
-                <button className="btn small" type="submit">Add Patron</button>
-                </form>
-        );
-    }
+            />
+            <button className="btn small" type="submit">Add Patron</button>
+        </form>
+    );
+}
 
-    

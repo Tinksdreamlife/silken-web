@@ -10,7 +10,7 @@ export default function ProfilePage() {
     useEffect(() => {
         async function fetchProfile() {
             try {
-                const data = await getProfile(); // now using service function
+                const data = await getProfile();
                 setProfile(data);
             } catch (err) {
                 if (err.message === "Profile not found") {

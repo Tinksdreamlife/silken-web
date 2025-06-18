@@ -2,7 +2,7 @@ import sendRequest from "./sendRequest";
 
 const BASE_URL = '/api/patrons';
 
-export function getAllPatrons(){
+export function getAllPatrons() {
   return sendRequest(BASE_URL);
 }
 
