@@ -1,8 +1,10 @@
 import './HomePage.css'
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 
-export default function HomePage() {
+export default function HomePage({user}) {
+  if (user) return <Navigate to="/dashboard" />
+  
   return (
   <div className="welcome-page">
     <div className="overlay">

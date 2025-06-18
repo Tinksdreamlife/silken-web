@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { getUser } from '../../services/authService';
 import HomePage from '../HomePage/HomePage';
 import SignUpPage from '../SignUpPage/SignUpPage';
@@ -25,6 +25,7 @@ export default function App() {
       <section id="main-section">
         {user ? (
           <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/profile" element={<ProfilePage key={Date.now()}/>} />
             <Route path="/profile/edit" element={<EditProfilePage />} />
@@ -38,7 +39,7 @@ export default function App() {
           </Routes>
         ) : (
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomePage user={user}/>} />
             <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
             <Route path="/login" element={<LogInPage setUser={setUser} />} />
             <Route path="*" element={null} />
