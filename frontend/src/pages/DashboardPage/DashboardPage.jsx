@@ -22,12 +22,14 @@ export default function DashboardPage() {
         <PageWrapper>
             <h1>Welcome back to your Silken Web</h1>
             <p className="dashboard-sub">What would you like to focus on today?</p>
+            <hr />
 
             <div className="dashboard-panels">
                 <div className="dashboard-card">
                     <h2>Profile</h2>
                     <p>Update your stage names and linked platforms.</p>
                     <Link to="/profile" className="btn small">View/ Edit Profile</Link>
+                    <hr />
                 </div>
 
                 <div className="dashboard-card">
@@ -35,6 +37,7 @@ export default function DashboardPage() {
                     <p>Review or add to your list of patrons.</p>
                     <Link to="/patrons" className="btn small">View Patrons</Link>
                     <Link to="/patrons/new" className="btn small">Add Patron</Link>
+                    <hr />
                 </div>
 
                 <div className="dashboard-card">

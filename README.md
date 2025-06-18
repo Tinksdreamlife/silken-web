@@ -33,15 +33,15 @@ It’s intuitive, discreet, and tailored — finally, a system that understands 
 
 **The welcome screen, where the web begins:**
 
-INSERT IMAGE
+![Welcome Page](/frontend/public/images/WelcomePage.png)
 
-(Background image edited by Tink; source via UPDATE THIS SECTION)
+(Background image edited by Tink; Spiderweb 1 Photo by <a href="/photographer/andreius-42792">Andreius</a> on <a href="/">Freeimages.com</a>)
 
-**Patron list and interaction tracking in action:**
+**Dashboard**
 
-INSERT IMAGE
+![Dashboard](/frontend/public/images/Dashboard.png)
 
-(Background image edited by Tink; source via UPDATE THIS SECTION)
+(Background image edited by Tink; source via Spiderweb 1 Photo by <a href="/photographer/andreius-42792">Andreius</a> on <a href="/">Freeimages.com</a>)
 
 # Technologies Used
 

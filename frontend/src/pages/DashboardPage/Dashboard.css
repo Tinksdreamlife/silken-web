@@ -15,11 +15,22 @@
     background-color: #ffffff;
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 40px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     flex: 1;
     min-width: 250px;
     max-width: 300px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center !important;
+}
+
+.dashboard-card hr {
+    width: 80%;
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 1rem 0;
 }
 
 .dashboard-card h2 {
@@ -30,10 +41,27 @@
     margin-bottom: 1rem;
 }
 
+.dashboard-card .btn {
+    margin: 0.5rem auto;
+    display: block;
+}
+
+.dashboard-card select {
+    margin: 0.5rem auto;
+    display: block;
+}
+
 .dashboard-card select {
     padding: 0.5rem;
     font-size: 1rem;
     border-radius: 0.5rem;
     border: 1px solid #ccc;
     width: 100%;
+}
+
+.dashboard-card h2,
+.dashboard-card p,
+.dashboard-card .btn,
+.dashboard-card select {
+  margin-bottom: 1rem;
 }
